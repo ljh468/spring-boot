@@ -4,22 +4,28 @@ import hello.hellospring.domain.Member;
 
 import java.util.*;
 
-public class MemoryMemberRepository implements MemberRepository{
+//@Repository
+public class MemoryMemberRepository implements MemberRepository {
 
     private static Map<Long, Member> store = new HashMap<>();
     private static long sequence = 0L;
 
     @Override
     public Member save(Member member) {
-        System.out.println("sequence : " + sequence);
+
         member.setId(++sequence);
-        System.out.println("sequence : " + sequence);
+
         store.put(member.getId(), member);
+        System.out.println("save member : " + member);
+
         return member;
     }
 
     @Override
     public Optional<Member> findById(Long id) {
+        System.out.println("getName : " + store.get(id).getName());
+        System.out.println("getId : " + store.get(id).getId());
+
         return Optional.ofNullable(store.get(id));
     }
 
@@ -35,7 +41,7 @@ public class MemoryMemberRepository implements MemberRepository{
         return new ArrayList<>(store.values());
     }
 
-    public void clearStore(){
+    public void clearStore() {
         store.clear();
     }
 }
