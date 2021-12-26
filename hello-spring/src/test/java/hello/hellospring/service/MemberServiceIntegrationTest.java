@@ -19,10 +19,11 @@ class MemberServiceIntegrationTest {
     @Autowired MemberRepository memberRepository; // 인터페이스를 DI함
     
     @Test
+//    @Commit
     void 회원가입() throws Exception{
         // given
         Member member = new Member();
-        member.setName("spring3");
+        member.setName("hello");
 
         // when
         Long saveId = memberService.join(member);
