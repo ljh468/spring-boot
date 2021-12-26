@@ -23,7 +23,13 @@ public class SpringConfig {
     public MemberService memberService(){
         return new MemberService(memberRepository);
     }
-    
+
+    // 시간측정 AOP 빈 등록
+//    @Bean
+//    public TimeTraceAop timeTraceAop(){
+//        return new TimeTraceAop();
+//    }
+
 //    // jdbc data source 생성    
 //    private DataSource dataSource;
 //    @Autowired
