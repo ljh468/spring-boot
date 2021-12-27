@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Optional;
 
 //@Service
-@Transactional
+@Transactional // JPA는 트랜잭션안에서 실행하여야 한다.
 public class MemberService {
 
     private final MemberRepository memberRepository;
