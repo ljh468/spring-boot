@@ -23,7 +23,7 @@ public class JpaMain {
             /**
              * 생성, 저장
              */
-//            Member member = new Member();
+//            Member member = new Member();est
 //            member.setId(2L);
 //            member.setName("HelloA");
 //            em.persist(member);
