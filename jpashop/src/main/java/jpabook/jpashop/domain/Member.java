@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -13,6 +15,18 @@ public class Member {
     private String city;
     private String street;
     private String zipcode;
+
+    // 연관 관계의 주인인 객체에서 외래키를 잡는 객체를 주인으로
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
 
     public Long getId() {
         return id;
