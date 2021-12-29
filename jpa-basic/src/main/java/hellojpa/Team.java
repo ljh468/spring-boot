@@ -17,7 +17,7 @@ public class Team {
     // 팀에서 멤버로 ( 1 : N )
     // 양방향에 매핑을 위해 team을 연관 매핑함
     // 연관관계의 주인이 아님 , 조회만 가능
-    @OneToMany(mappedBy = "team") // mappedBy : 나의 반대편은 team이 연관되어있음을 표시
+    @OneToMany(mappedBy = "team") // mappedBy : 연관관계의 주인이 자신을 team이라고 참조하고있다.
     private List<Member3> members = new ArrayList<>();
 
     public Long getId() {
