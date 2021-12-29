@@ -47,10 +47,6 @@ public class JpaMain {
             orderItem.setOrder(order);
             em.persist(orderItem);
 
-
-
-
-
             System.out.println("===============");
             tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)
 
