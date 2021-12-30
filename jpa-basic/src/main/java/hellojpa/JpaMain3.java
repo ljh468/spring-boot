@@ -102,7 +102,7 @@ public class JpaMain3 {
 
             // 회원 저장
             Member3 member = new Member3();
-            member.setName("MemberA" );
+            member.setName("MemberA");
             member.changeTeam(team); // **
             em.persist(member);
 
@@ -120,19 +120,15 @@ public class JpaMain3 {
             System.out.println("===============");
 
             System.out.println("===============");
-        tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)
+            tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)
 
-} catch(
-        Exception e)
-
-        {
-        tx.rollback(); // 예외면 롤백
-        }finally
-
-        {
-        em.close(); // 엔티티 매니저를 닫음
+        } catch (
+                Exception e) {
+            tx.rollback(); // 예외면 롤백
+        } finally {
+            em.close(); // 엔티티 매니저를 닫음
         }
 
         emf.close(); // 엔티티 매니저 팩토리 닫음
-        }
-        }
+    }
+}
