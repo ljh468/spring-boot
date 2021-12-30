@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Item {
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name="DTYPE")
+public abstract class Item extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name = "ITEM_ID")
@@ -18,6 +20,9 @@ public class Item {
     // 다대다 매핑 (실전에서는 중간테이블을 이용해서 1:N, N:1로 매핑 해야함)
     @ManyToMany(mappedBy = "items")
     private List<Category> categories = new ArrayList<>();
+
+    // 상속 매핑
+
 
     public Long getId() {
         return id;

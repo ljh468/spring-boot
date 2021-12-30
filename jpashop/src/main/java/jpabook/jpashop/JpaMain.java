@@ -1,6 +1,7 @@
 package jpabook.jpashop;
 
 
+import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.domain.OrderItem;
@@ -48,8 +49,15 @@ public class JpaMain {
 
 
             /**
-             *
+             * 상속매핑, 슈퍼클래스 실습
+             * 상속매핑은 Join전략
+             * @MappedSuperclass를 사용한 등록일, 수정일, 등록자, 수정자 공통속성 상속
              */
+            Book book = new Book();
+            book.setName("JPA");
+            book.setAuthor("김영한");
+
+            em.persist(book);
 
 
             System.out.println("===============");
