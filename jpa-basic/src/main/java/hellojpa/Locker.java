@@ -17,4 +17,27 @@ public class Locker {
     @OneToOne(mappedBy = "locker")
     private Member3 member;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Member3 getMember() {
+        return member;
+    }
+
+    public void setMember(Member3 member) {
+        this.member = member;
+    }
 }

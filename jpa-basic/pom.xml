@@ -11,7 +11,7 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-
+    SELECT * FROM MEMBER3
     <dependencies>
         <!-- JPA 하이버네이트 -->
         <!-- hibernate.org -> hibernateORM -> release 확인 -->
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.3.10.Final</version>
+            <version>5.4.14.Final</version>
         </dependency>
 
         <dependency>

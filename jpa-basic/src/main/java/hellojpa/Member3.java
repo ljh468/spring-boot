@@ -22,7 +22,11 @@ public class Member3 extends BaseEntity{
     // 데이터베이스 관점의 방향
     //    @ManyToOne(fetch = FetchType.LAZY) // FETCH LAZY옵션은 쿼리가 분리되서 나옴(지연로딩 전략)
     // 연관관계의 주인 ( 외래키가 있는곳이 연관관계의 주인이다 )
-    @ManyToOne // member는 N, team은 1 (N : 1)
+    // member는 N, team은 1 (N : 1)
+
+//    @ManyToOne(fetch = FetchType.EAGER) // 즉시로딩 : Member클래스와 Team클래스를 DB에서 모두 실제 객체를 조회
+//    @ManyToOne(fetch = FetchType.LAZY) // 지연로딩 : 프록시 객체로 조회 (Member클래스만 DB에서 조회하고 Team은 프록시 조회)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
