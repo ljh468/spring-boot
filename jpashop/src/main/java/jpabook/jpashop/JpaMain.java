@@ -38,14 +38,19 @@ public class JpaMain {
             /**
              * 연관관계 매핑 (참조를 사용하도록 변경)
              */
+//            Order order = new Order();
+//            em.persist(order);
+////            order.addOrderItem(new OrderItem());
+//
+//            OrderItem orderItem = new OrderItem();
+//            orderItem.setOrder(order);
+//            em.persist(orderItem);
 
-            Order order = new Order();
-            em.persist(order);
-//            order.addOrderItem(new OrderItem());
 
-            OrderItem orderItem = new OrderItem();
-            orderItem.setOrder(order);
-            em.persist(orderItem);
+            /**
+             *
+             */
+
 
             System.out.println("===============");
             tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)

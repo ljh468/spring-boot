@@ -1,5 +1,7 @@
 package jpabook.jpashop.domain;
 
+import org.hibernate.mapping.ToOne;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -30,6 +32,18 @@ public class Order {
 
     @Enumerated(EnumType.STRING)
     private OrderStatus status;
+
+    @OneToOne
+    @JoinColumn(name="DELIVERY_ID")
+    private Delivery delivery;
+
+    public Delivery getDelivery() {
+        return delivery;
+    }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
 
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
