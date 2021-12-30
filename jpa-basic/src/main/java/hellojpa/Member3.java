@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Member3 {
+public class Member3 extends BaseEntity{
 
     @Id
     @GeneratedValue
