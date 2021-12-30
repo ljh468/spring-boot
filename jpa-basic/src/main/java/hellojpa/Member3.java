@@ -1,6 +1,8 @@
 package hellojpa;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member3 {
@@ -27,6 +29,37 @@ public class Member3 {
     public void changeTeam(Team team) {
         this.team = team;
         team.getMembers().add(this);
+    }
+    
+    // 일대일 매핑
+    @OneToOne
+    @JoinColumn(name = "LOCKER_ID")
+    private Locker locker;
+
+//    // 다대다 매핑
+//    // DB는 연결 테이블을 생성함
+//    @ManyToMany
+//    @JoinTable(name = "MEMBER_PRODUCT")
+//    private List<Product> products = new ArrayList<>();
+
+    // 연결테이블로 인한 대다대 풀이
+    @OneToMany(mappedBy = "member")
+    private List<MemberProduct> memberProducts = new ArrayList<>();
+
+    public List<MemberProduct> getMemberProducts() {
+        return memberProducts;
+    }
+
+    public void setMemberProducts(List<MemberProduct> memberProducts) {
+        this.memberProducts = memberProducts;
+    }
+
+    public Locker getLocker() {
+        return locker;
+    }
+
+    public void setLocker(Locker locker) {
+        this.locker = locker;
     }
 
     public Team getTeam() {
@@ -70,13 +103,13 @@ public class Member3 {
 //    }
 
 
-    @Override
-    public String toString() {
-        return "Member3{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", team=" + team +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Member3{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", age=" + age +
+//                ", team=" + team +
+//                '}';
+//    }
 }
