@@ -109,6 +109,7 @@ public class JpaMain5 {
 //            em.persist(child2);
             em.flush();
             em.clear();
+
             /**
              * 고아객체 (orphanRemoval = true)
              * 부모엔티티와 연관관계가 끊어진 자식엔티티를 자동으로 삭제
@@ -120,7 +121,6 @@ public class JpaMain5 {
             Parent findParent = em.find(Parent.class, parent.getId());
 //            findParent.getChildList().remove(0); // 컬렉션에서 빠지면 삭제됨
             em.remove(findParent); // 연관된 자식엔티티 자동 제거
-//
 
             System.out.println("=======  end  ========");
             tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)
