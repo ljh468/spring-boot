@@ -21,5 +21,19 @@ public class ValueMain {
         c = 20;
         System.out.println("c = " + c);
         System.out.println("d = " + d);
+
+        /**
+         * 객체타입의 비교
+         * 인스턴스의 참조값을 비교,  == 사용
+         * 인스턴스의 값을 비교, equals()를 오버라이드해서 사용
+         */
+        Address address1 = new Address("city", "street", "zipcode");
+        Address address2 = new Address("city", "street", "zipcode");
+
+        // 동일성 비교 == 사용
+        System.out.println("address1 == address2 = " + (address1 == address2));
+
+        // 동등성 비교 .equals() 사용, equals를 오버라이드해서 사용
+        System.out.println("address1 == address2 = " + (address1.equals(address2)));
     }
 }
