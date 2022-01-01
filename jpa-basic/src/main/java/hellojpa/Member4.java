@@ -3,6 +3,10 @@ package hellojpa;
 import javax.persistence.*;
 import javax.xml.namespace.QName;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Member4{
@@ -32,6 +36,33 @@ public class Member4{
             @AttributeOverride(name = "zipcode", column = @Column(name = "WORK_ZIPCODE")),
     })
     private Address workAddress;
+
+    /**
+     * 값 타입 컬렉션
+     * 값 타입을 하나 이상 저장할 때 사용
+     * @ElementCollection, @CollectionTable 사용
+     * 데이터베이스는 컬렉션을 같은 테이블에 저장할 수 없다.
+     * 컬렉션을 저장하기 위한 별도의 테이블이 필요함
+     */
+    @ElementCollection
+    @CollectionTable(name = "FAVORITE_FOOD", joinColumns =
+        @JoinColumn(name = "MEMBER_ID")
+    )
+    @Column(name = "FOOD_NAME")
+    private Set<String> favoriteFoods = new HashSet<>();
+
+//    @ElementCollection
+//    @CollectionTable(name = "ADDRESS", joinColumns =
+//    @JoinColumn(name = "MEMBER_ID")
+//    )
+//    private List<Address> addressHistory = new ArrayList<>();
+
+    /**
+     * 값타입 컬렉션의 대안
+     */
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "MEMBER_ID")
+    private List<AddressEntity> addressHistory = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -71,5 +102,29 @@ public class Member4{
 
     public void setWorkAddress(Address workAddress) {
         this.workAddress = workAddress;
+    }
+
+    public Set<String> getFavoriteFoods() {
+        return favoriteFoods;
+    }
+
+    public void setFavoriteFoods(Set<String> favoriteFoods) {
+        this.favoriteFoods = favoriteFoods;
+    }
+
+//    public List<Address> getAddressHistory() {
+//        return addressHistory;
+//    }
+//
+//    public void setAddressHistory(List<Address> addressHistory) {
+//        this.addressHistory = addressHistory;
+//    }
+
+    public List<AddressEntity> getAddressHistory() {
+        return addressHistory;
+    }
+
+    public void setAddressHistory(List<AddressEntity> addressHistory) {
+        this.addressHistory = addressHistory;
     }
 }
