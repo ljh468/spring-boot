@@ -45,4 +45,14 @@ public class Member {
     public void setAge(int age) {
         this.age = age;
     }
+
+    // 객체가 들어있는 값은 지워줌 (무한루프 탈수 있음)
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", age=" + age +
+                '}';
+    }
 }
