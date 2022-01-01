@@ -19,7 +19,7 @@
             <!-- 스키마 자동생성 속성 -->
             <!-- create, create-drop, update, validate, none -->
             <!-- 운영장비에는 정대 create, create-drop, update를 사용하면 안됨 -->
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+<!--            <property name="hibernate.hbm2ddl.auto" value="create" />-->
         </properties>
     </persistence-unit>
 </persistence>

@@ -53,12 +53,16 @@ public class JpaMain {
              * 상속매핑은 Join전략
              * @MappedSuperclass를 사용한 등록일, 수정일, 등록자, 수정자 공통속성 상속
              */
-            Book book = new Book();
-            book.setName("JPA");
-            book.setAuthor("김영한");
+//            Book book = new Book();
+//            book.setName("JPA");
+//            book.setAuthor("김영한");
+//
+//            em.persist(book);
 
-            em.persist(book);
-
+            /**
+             * 값타입 컬렉션 실습
+             */
+            
 
             System.out.println("===============");
             tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)

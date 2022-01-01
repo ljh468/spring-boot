@@ -84,53 +84,53 @@ public class JpaMain6 {
              * 컬렉션을 저장하기 위한 별도의 테이블이 필요함
              */
 
-            // 값타입 컬렉션 저장
-            // 값타입 컬렉션은 생명주기를 엔티티에 의존한다.
-            // 영속성 전이(Cascade) + 고아객체제거기능을 필수로 가진다고 볼 수 있다.
-            System.out.println("============== 값타입 저장 ==============");
-            Member4 member = new Member4();
-            member.setName("member_value1");
-            member.setHomeAddress(new Address("homeCity", "street1", "10000"));
-
-            member.getFavoriteFoods().add("피자");
-            member.getFavoriteFoods().add("치킨");
-            member.getFavoriteFoods().add("스파게티");
-
-            member.getAddressHistory().add(new AddressEntity("old1", "street1", "10000"));
-            member.getAddressHistory().add(new AddressEntity("old2", "street1", "10000"));
-
-            em.persist(member);
-
-            em.flush();
-            em.clear();
-
-            System.out.println("============== 값타입 조회 ==============");
-            // 값타입 조회
-            Member4 findMember = em.find(Member4.class, member.getId());
-
-            // 값타입 컬렉션은 지연로딩 전략을 사용
-            List<AddressEntity> addressHistory = findMember.getAddressHistory();
-            for (AddressEntity address : addressHistory) {
-                System.out.println("address = " + address.getAddress());
-            }
-            Set<String> favoriteFoods = findMember.getFavoriteFoods();
-            for (String favoriteFood : favoriteFoods) {
-                System.out.println("favoriteFood = " + favoriteFood);
-            }
-
-            // 값타입 컬렉션 수정
-            // 값타입은 통으로 갈아껴야한다.
-
-            System.out.println("============== 값타입 수정 ==============");
-            // homeCity -> newCity
-            Address a = findMember.getHomeAddress();
-            findMember.setHomeAddress(new Address("newCity", a.getStreet(), a.getZipcode()));
-
-            // 스파게티 -> 한식 (값을 제거하고 다시 새로 저장)
-            findMember.getFavoriteFoods().remove("스파게티");
-            findMember.getFavoriteFoods().add("한식");
-
-            // old1 -> newCity1
+//            // 값타입 컬렉션 저장
+//            // 값타입 컬렉션은 생명주기를 엔티티에 의존한다.
+//            // 영속성 전이(Cascade) + 고아객체제거기능을 필수로 가진다고 볼 수 있다.
+//            System.out.println("============== 값타입 저장 ==============");
+//            Member4 member = new Member4();
+//            member.setName("member_value1");
+//            member.setHomeAddress(new Address("homeCity", "street1", "10000"));
+//
+//            member.getFavoriteFoods().add("피자");
+//            member.getFavoriteFoods().add("치킨");
+//            member.getFavoriteFoods().add("스파게티");
+//
+//            member.getAddressHistory().add(new AddressEntity("old1", "street1", "10000"));
+//            member.getAddressHistory().add(new AddressEntity("old2", "street1", "10000"));
+//
+//            em.persist(member);
+//
+//            em.flush();
+//            em.clear();
+//
+//            System.out.println("============== 값타입 조회 ==============");
+//            // 값타입 조회
+//            Member4 findMember = em.find(Member4.class, member.getId());
+//
+//            // 값타입 컬렉션은 지연로딩 전략을 사용
+//            List<AddressEntity> addressHistory = findMember.getAddressHistory();
+//            for (AddressEntity address : addressHistory) {
+//                System.out.println("address = " + address.getAddress());
+//            }
+//            Set<String> favoriteFoods = findMember.getFavoriteFoods();
+//            for (String favoriteFood : favoriteFoods) {
+//                System.out.println("favoriteFood = " + favoriteFood);
+//            }
+//
+//            // 값타입 컬렉션 수정
+//            // 값타입은 통으로 갈아껴야한다.
+//
+//            System.out.println("============== 값타입 수정 ==============");
+//            // homeCity -> newCity
+//            Address a = findMember.getHomeAddress();
+//            findMember.setHomeAddress(new Address("newCity", a.getStreet(), a.getZipcode()));
+//
+//            // 스파게티 -> 한식 (값을 제거하고 다시 새로 저장)
+//            findMember.getFavoriteFoods().remove("스파게티");
+//            findMember.getFavoriteFoods().add("한식");
+//
+//            // old1 -> newCity1
             /**
              * 값타입 컬렉션의 제약사항
              * 값타입은 엔티티와 다르게 식별자 개념이 없다., 값은 변경하면 추적이 어렵다.
@@ -149,10 +149,6 @@ public class JpaMain6 {
              * 엔티티와 값타입을 혼동해서 엔티티를 값타입으로 만들면 안됨
              * 식별자가 필요하고, 지속해서 값을 추적, 변경해야 한다면 그것은 값타입이 아닌 엔티티
              */
-//            findMember.getAddressHistory().remove(new Address("old1", "street1", "10000"));
-//            findMember.getAddressHistory().add(new Address("newCity1", "street1", "10000"));
-
-
 
             System.out.println("=======  end  ========");
             tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)
