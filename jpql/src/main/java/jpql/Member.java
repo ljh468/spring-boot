@@ -13,7 +13,10 @@ public class Member {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
-    
+
+    @Enumerated(EnumType.STRING)
+    private MemberType type;
+
     // 연관관계 매핑
     public void changeTeam(Team team){
         this.team = team;
@@ -50,6 +53,14 @@ public class Member {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public MemberType getType() {
+        return type;
+    }
+
+    public void setType(MemberType type) {
+        this.type = type;
     }
 
     // 객체가 들어있는 값은 지워줌 (무한루프 탈수 있음)
