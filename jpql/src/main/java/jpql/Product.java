@@ -3,9 +3,6 @@ package jpql;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 public class Product {
@@ -16,8 +13,8 @@ public class Product {
     private int price;
     private int stockAmount;
 
-    @OneToMany(mappedBy = "product")
-    private List<Order> orders = new ArrayList<>();
+//    @OneToMany(mappedBy = "product")
+//    private List<Order> orders = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -49,13 +46,5 @@ public class Product {
 
     public void setStockAmount(int stockAmount) {
         this.stockAmount = stockAmount;
-    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
     }
 }
