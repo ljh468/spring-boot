@@ -20,7 +20,4 @@ public class Dept {
 
     private String dept_name;
 
-    @OneToMany(mappedBy = "dept")
-    private List<User> userList = new ArrayList<>();
-
 }

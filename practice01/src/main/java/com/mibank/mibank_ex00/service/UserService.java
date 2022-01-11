@@ -1,12 +1,15 @@
 package com.mibank.mibank_ex00.service;
 
+import com.mibank.mibank_ex00.domain.Dept;
 import com.mibank.mibank_ex00.domain.User;
 import com.mibank.mibank_ex00.domain.UserRoleEnum;
+import com.mibank.mibank_ex00.dto.DeptRequestDto;
 import com.mibank.mibank_ex00.dto.UserRequestDto;
 import com.mibank.mibank_ex00.repository.DeptRepository;
 import com.mibank.mibank_ex00.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -25,6 +28,7 @@ public class UserService {
         this.deptRepository = deptRepository;
     }
 
+    @Transactional
     public User registerUser(UserRequestDto requestDto) {
         // 회원 ID 중복 확인
         String username = requestDto.getUser_name();
@@ -50,15 +54,14 @@ public class UserService {
         System.out.println("role = " + role);
 
         // 부서명 조회
-        String deptname = requestDto.getDept_name();
-        System.out.println("deptname = " + deptname);
 //        List<User> userList =  deptRepository.findAllByUser(deptname);
 //        for (User user : userList){
 //            if(username.equals(username)){
 //                throw new IllegalArgumentException("이미 부서에 가입된 화원입니다.");
 //            }
 //        }
-        User user = new User(username, password, email, deptname, role);
+        User user = new User(username, password, email, role);
+        System.out.println("user = " + user.toString());
         userRepository.save(user);
         return user;
     }

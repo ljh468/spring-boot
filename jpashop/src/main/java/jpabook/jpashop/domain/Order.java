@@ -1,24 +1,21 @@
 package jpabook.jpashop.domain;
 
-import org.hibernate.mapping.ToOne;
-
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-import static javax.persistence.CascadeType.*;
-import static javax.persistence.FetchType.*;
+import static javax.persistence.CascadeType.ALL;
+import static javax.persistence.FetchType.LAZY;
 
-@Entity
-@Table(name = "ORDERS")
-public class Order extends BaseEntity{
+    @Entity
+    @Table(name = "ORDERS")
+    public class Order extends BaseEntity{
 
-    @Id
-    @GeneratedValue
-    @Column(name = "ORDER_ID")
-    private Long id;
+        @Id
+        @GeneratedValue
+        @Column(name = "ORDER_ID")
+        private Long id;
 
 //    @Column(name = "MEMBER_ID")
 //    private Long memberId;

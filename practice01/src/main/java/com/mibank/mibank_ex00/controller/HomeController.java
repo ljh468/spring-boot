@@ -9,12 +9,11 @@ public class HomeController {
 
     @GetMapping("/home")
     public String home(Model model){
-
         return "index2";
     }
 
-    @GetMapping("/")
+    @GetMapping("/redirect")
     public String index(Model model){
-        return "redirect:/index.html";
+        return "redirect:/home"; // 정적페이지로 보내거나 GetMapping 주소로 redirect 보냄
     }
 }

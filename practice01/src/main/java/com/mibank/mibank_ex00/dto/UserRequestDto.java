@@ -10,7 +10,6 @@ public class UserRequestDto {
     private String user_name;
     private String user_pwd;
     private String email;
-    private String dept_name;
     private boolean admin = false;
     private String adminToken = "";
 
