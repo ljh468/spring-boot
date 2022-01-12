@@ -43,6 +43,7 @@ public class UserService {
         System.out.println("password = " + password);
         String email = requestDto.getEmail();
         System.out.println("email = " + email);
+
         // 사용자 ROLE 확인
         UserRoleEnum role = UserRoleEnum.USER;
         if (requestDto.isAdmin()) {
