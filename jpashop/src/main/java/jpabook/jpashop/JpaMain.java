@@ -1,15 +1,14 @@
 package jpabook.jpashop;
 
 
-import jpabook.jpashop.domain.Book;
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.domain.Order;
-import jpabook.jpashop.domain.OrderItem;
+import jpabook.jpashop.domain.Sms;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.time.LocalDateTime;
 
 // JPA 정석 코드
 public class JpaMain {
@@ -62,7 +61,39 @@ public class JpaMain {
             /**
              * 값타입 컬렉션 실습
              */
-            
+
+            /**
+             * TEST SMS 1만데이터
+             */
+
+
+            LocalDateTime now = LocalDateTime.now();
+
+            for(int i = 0; i < 100000; i++){
+                Sms sms = new Sms();
+
+                sms.setAuthcode("000" + i);
+                sms.setBirth("90" + i);
+                sms.setMobile("01058" + i);
+
+                now = now.plusMinutes(1);
+                sms.setRegdt(now);
+
+                em.persist(sms);
+            }
+            em.flush();
+            em.clear();
+
+            for (int i = 0; i < 50; i++) {
+                Member team = new Member();
+                team.setName("team"+i);
+                em.persist(team);
+
+            }
+            em.flush();
+            em.clear();
+
+
 
             System.out.println("===============");
             tx.commit(); // 정상이면 커밋 (이때 DB에 저장됨)
